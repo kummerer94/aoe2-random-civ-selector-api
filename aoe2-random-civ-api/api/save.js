@@ -4,6 +4,8 @@ const connectToDatabase = require("../database").connectToDatabase;
 
 // This is the serverless function dealing with api requests
 module.exports = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "*");
   const { user } = req.query;
   try {
     req.body;
