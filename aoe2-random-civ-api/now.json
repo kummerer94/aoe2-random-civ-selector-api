@@ -1,5 +1,4 @@
 {
-  "name": "aoe2-random-civ-api",
   "version": 2,
   "env": {
     "MONGODB_CONN_STR": "@mongodb-aoe2-rcs-conn-str"

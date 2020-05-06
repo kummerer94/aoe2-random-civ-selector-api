@@ -1,6 +1,6 @@
 // The API behind saving and loading configurations for AoE RCS.
 
-const connectToDatabase = require("../database").connectToDatabase;
+const connectToDatabase = require("./_database").connectToDatabase;
 
 // This is the serverless function dealing with api requests
 module.exports = async (req, res) => {

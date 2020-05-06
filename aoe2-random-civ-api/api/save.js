@@ -1,11 +1,19 @@
 // The API behind saving and loading configurations for AoE RCS.
 
-const connectToDatabase = require("../database").connectToDatabase;
+const connectToDatabase = require("./_database").connectToDatabase;
 
 // This is the serverless function dealing with api requests
 module.exports = async (req, res) => {
+  // Take care of CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   const { user } = req.query;
   try {
     req.body;
@@ -15,6 +23,15 @@ module.exports = async (req, res) => {
   if (user === undefined || user === "") {
     res.status(400).json({ error: "No user given." });
   } else {
+    if (
+      req.body === "" ||
+      req.body === undefined ||
+      req.body === null ||
+      !(req.body instanceof Object)
+    ) {
+      return res.status(400).json({ error: "Malformed body." });
+    }
+    console.log(req.body);
     const db = await connectToDatabase(process.env.MONGODB_CONN_STR);
     const collection = await db.collection("configurations");
     await collection.insert({
