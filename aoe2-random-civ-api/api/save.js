@@ -31,7 +31,6 @@ module.exports = async (req, res) => {
     ) {
       return res.status(400).json({ error: "Malformed body." });
     }
-    console.log(req.body);
     const db = await connectToDatabase(process.env.MONGODB_CONN_STR);
     const collection = await db.collection("configurations");
     await collection.insert({
