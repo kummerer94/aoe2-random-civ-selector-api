@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "env": {
-    "MONGODB_CONN_STR": "@mongodb-aoe2-rcs-conn-str"
-  },
   "routes": [
     {
       "src": "/api/load.js",
