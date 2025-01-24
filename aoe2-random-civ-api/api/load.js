@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
     .sort({ inserted: -1 })
     .limit(1)
     .toArray();
+  console.log("# configurations: ", configurations.length);
   if (configurations.length == 1) {
     configurations = configurations[0];
   }
