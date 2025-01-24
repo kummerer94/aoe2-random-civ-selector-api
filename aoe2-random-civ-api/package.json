@@ -10,6 +10,6 @@
   "author": "Alexander Kammerer",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.5.7"
+    "mongodb": "^6.0.0"
   }
 }
