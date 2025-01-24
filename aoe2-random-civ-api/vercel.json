@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/api/load.js",
-      "methods": ["GET"],
+      "methods": ["GET", "OPTIONS"],
       "dest": "/api/load.js",
       "headers": {
         "Access-Control-Allow-Credentials": "true",
@@ -14,7 +14,7 @@
     },
     {
       "src": "/api/save.js",
-      "methods": ["POST"],
+      "methods": ["POST", "OPTIONS"],
       "dest": "/api/save.js",
       "headers": {
         "Access-Control-Allow-Credentials": "true",
