@@ -40,7 +40,6 @@ module.exports = async (req, res) => {
         civilizations: req.body,
       },
     ]);
-    console.log(saveResult);
     res.status(200).json({ status: "Inserted your document." });
   }
 };
