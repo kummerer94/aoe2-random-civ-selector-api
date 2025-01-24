@@ -5,11 +5,14 @@ const connectToDatabase = require("./_database").connectToDatabase;
 // This is the serverless function dealing with api requests
 module.exports = async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  const user = { user: req.query };
+  const { user = "standard" } = req.query;
   const db = await connectToDatabase(process.env.MONGODB_CONN_STR);
   const collection = await db.collection("configurations");
   console.log("User: ", user);
-  const cursor = collection.find({ user }).sort({ inserted: -1 }).limit(1);
+  const cursor = collection
+    .find({ user: user })
+    .sort({ inserted: -1 })
+    .limit(1);
   let configurations = await cursor.toArray();
   console.log("# configurations: ", configurations.length);
   if (configurations.length == 1) {
