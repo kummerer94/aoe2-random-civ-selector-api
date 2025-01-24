@@ -8,6 +8,8 @@ module.exports = async (req, res) => {
   const { user = "standard" } = req.query;
   const db = await connectToDatabase(process.env.MONGODB_CONN_STR);
   const collection = await db.collection("configurations");
+  console.log("Collection: ", collection);
+  console.log("User: ", user);
   const cursor = collection.find({ user }).sort({ inserted: -1 }).limit(1);
   let configurations = await cursor.toArray();
   console.log("# configurations: ", configurations.length);
