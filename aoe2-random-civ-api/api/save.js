@@ -33,11 +33,13 @@ module.exports = async (req, res) => {
     }
     const db = await connectToDatabase(process.env.MONGODB_CONN_STR);
     const collection = await db.collection("configurations");
-    await collection.insert({
-      user,
-      inserted: new Date(),
-      civilizations: req.body,
-    });
+    await collection.insertMany([
+      {
+        user,
+        inserted: new Date(),
+        civilizations: req.body,
+      },
+    ]);
     res.status(200).json({ status: "Inserted your document." });
   }
 };
